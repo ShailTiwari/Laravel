@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Models\User;
+use App\Models\Sidebar;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $loggedInUser = 'shail';
+        $data= Sidebar::paginate(5);
+        View::share('loggedInUser', $data);
+        View::share('loggedInUserr', $data);
     }
 }

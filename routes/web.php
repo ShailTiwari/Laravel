@@ -22,8 +22,9 @@ Route::post('post-login', [login::class, 'postLogin'])->name('login.post');
 Route::get('logout', [login::class, 'logout'])->name('logout');
 Route::post('post-signup', [login::class, 'ragister'])->name('ragister.post'); 
 
-Route::get('getall', [login::class, 'getData'])->name('getData');
 Route::group(['middleware'=>['logincheck']],function()
 {    
 Route::get('home', [login::class,'home'])->name('welcome');
+Route::get('tabale_data', [login::class, 'tableData']);
+Route::get('get_data', [login::class, 'getData'])->name('getData');
 });

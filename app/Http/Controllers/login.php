@@ -21,8 +21,11 @@ class login extends Controller
 
      public function home()
     {
-         $data= User::all();
-        return view('welcome',['members'=>$data]);
+         $data= User::paginate(5);
+         $bounce_rate=32.56;
+         $page_view=6859;
+         $new_session=64.25;
+         return view('welcome',['members'=>$data,'bounce_rate'=>$bounce_rate,'page_view'=>$page_view,'new_session'=>$new_session]);
     }
        public function logout()
     {
@@ -77,17 +80,19 @@ class login extends Controller
                 return redirect('login');
                }
 
-
-                       // return $data= $request->input();
-       // return User::all();
-
     }
 
+
+function tableData()
+    {
+        $data= User::paginate(10);
+        return view('table_data',['members'=>$data]);
+    }
 
 
     function getData()
     {
-         return User::all();
+         return User::paginate(10);
     }
 
 
